@@ -1,0 +1,14 @@
+.list{width: 100%;height: 100%;overflow-y: auto;
+    ul{display: flex;display: -webkit-flex;flex-flow: column;justify-content: flex-start;
+        li{width: 100%;display: flex;display: -webkit-flex;flex-flow: row;background: #fff;padding: 5px 10px;margin-bottom: 3px;cursor: pointer;border-radius: 4px;
+            &:hover,&:active{background: #eee}
+            &.active{background: rgb(235, 99, 99);color: #fff}
+            .head{
+                width: 50px;
+                img{width: 100%}
+            }
+            .foot{padding: 5px}
+            
+        }
+    }
+}
