@@ -1,8 +1,8 @@
-const host='http://jd.rxdey.xyz/';
+const host='http://game.weilot.com/';
 const api={
     getInfo:{
         method:'post',
-        url:host+'/index/getGameList'
+        url:host+'games/sept.api.index/getGameList'
     }
 }
 

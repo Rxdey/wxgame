@@ -6,6 +6,7 @@ const ExtractTextPlugin = require('extract-text-webpack-plugin');
 // const html = require('html-withimg-loader!./index.html');
 module.exports = {
     devtool: "eval-source-map", //生产阶段关闭这个选项
+    // devtool: false,
     entry: {
         app: "./src/index.js"
     },
@@ -31,10 +32,19 @@ module.exports = {
             chunks: ['app']
         }),
         new webpack.optimize.OccurrenceOrderPlugin(), //分配id
-        new webpack.optimize.UglifyJsPlugin(), //压缩
-        // new ExtractTextPlugin("./css/style.css")//分离
-        new ExtractTextPlugin("style.css") //分离
-        // new HtmlWebpackPlugin.HotModuleReplacementPlugin()//热加载插件
+        new webpack.optimize.UglifyJsPlugin({
+            sourceMap: true
+        }), //压缩
+        new webpack.LoaderOptionsPlugin({
+            minimize: true
+            }),
+        new ExtractTextPlugin("style.css"), //分离
+        // new HtmlWebpackPlugin.HotModuleReplacementPlugin(),//热加载插件
+        new webpack.DefinePlugin({
+            "process.env": { 
+               NODE_ENV: JSON.stringify("production") 
+             }
+          })
 
     ],
     module: {
